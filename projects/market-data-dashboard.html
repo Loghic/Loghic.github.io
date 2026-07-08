@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Market Data Dashboard · Loghic</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<div class="container">
+  <a class="back-link" href="../index.html#projects">← back</a>
+
+  <h1>Market Data Dashboard</h1>
+
+  <p class="lede">
+    A web application built in C# (ASP.NET Core) that downloads, stores, visualizes, and
+    analyzes historical stock market data — built to demonstrate real-world engineering
+    practices: async data processing, local persistence, external service integration,
+    and clean architectural separation.
+  </p>
+
+  <div class="tag-row">
+    <span class="tag">C# 12 / .NET 9</span><span class="tag">ASP.NET Core Razor Pages</span>
+    <span class="tag">SQLite / EF Core</span><span class="tag">Chart.js</span><span class="tag">Python</span>
+  </div>
+
+  <h2>Features</h2>
+  <ul class="feature-list">
+    <li>Download historical prices from the Alpha Vantage API, cached locally with SQLite + EF Core (incremental updates only)</li>
+    <li>Interactive time-series charts (Chart.js) with zoom/pan and CSV export</li>
+    <li><strong>Technical indicators</strong> — SMA (10/20/50/100), EMA (10/20/50), RSI (7/14), Bollinger Bands, MACD</li>
+    <li><strong>Asynchronous prediction module</strong> — cross-language integration with a Python regression script, polled every 500 ms without blocking the UI</li>
+    <li>Responsive tabbed UI for multiple stock symbols, built with Bootstrap 5 and jQuery DataTables</li>
+  </ul>
+
+  <h2>Testing &amp; CI</h2>
+  <p>
+    33 unit tests (xUnit, Moq, EF Core InMemory) across technical indicators, CSV export,
+    data service, and the prediction workflow. Tests run automatically on every push via
+    GitHub Actions.
+  </p>
+
+  <div class="links-row">
+    <a href="https://github.com/Loghic/Financial_data_dashboard">Repository ↗</a>
+  </div>
+
+  <footer>
+    <span>Matěj Michálek — FJFI ČVUT, Prague</span>
+    <span class="links-row">
+      <a href="https://github.com/Loghic">GitHub ↗</a>
+      <a href="https://www.linkedin.com/in/mat%C4%9Bj-mich%C3%A1lek-loghic">LinkedIn ↗</a>
+    </span>
+  </footer>
+</div>
+</body>
+</html>

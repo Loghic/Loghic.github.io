@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ClusterLab · Loghic</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<div class="container">
+  <a class="back-link" href="../index.html#projects">← back</a>
+
+  <h1>ClusterLab</h1>
+
+  <p class="lede">
+    An interactive k-means clustering visualizer in Rust. Runs natively on desktop and
+    in the browser via WebAssembly, animating every iteration so you can watch centroids
+    move, point assignments flip, and Voronoi cells reshape — in 2D or 3D.
+  </p>
+
+  <div class="tag-row">
+    <span class="tag">Rust</span><span class="tag">macroquad</span><span class="tag">WebAssembly</span>
+  </div>
+
+  <h2>Features</h2>
+  <ul class="feature-list">
+    <li><strong>2D and 3D modes</strong>, each fully independent — pan/zoom/click-to-add in 2D, orbit camera in 3D</li>
+    <li><strong>Voronoi visualization</strong> — edges in 2D, bisector planes in 3D</li>
+    <li>Run controls: single step, auto-run, run-to-convergence, and an infinite loop mode</li>
+    <li><strong>Built-in datasets</strong> — random Gaussian blobs, two-moons, and the Fisher iris dataset (PCA-projected in 3D)</li>
+    <li>Point editing in 2D — add, delete, or hand-place centroids</li>
+    <li>Pure-logic core kept separate from rendering for testability</li>
+  </ul>
+
+  <h2>Engineering</h2>
+  <p>
+    89 tests across the k-means, geometry, and animation modules. CI runs fmt, clippy
+    (deny warnings), and the full test suite, with coverage uploaded to Codecov. The
+    codebase enforces a boundary where only the <code>viz</code>/<code>app</code> layers
+    may import the rendering library.
+  </p>
+
+  <div class="links-row">
+    <a href="https://github.com/Loghic/clusterlab">Repository ↗</a>
+  </div>
+
+  <footer>
+    <span>Matěj Michálek — FJFI ČVUT, Prague</span>
+    <span class="links-row">
+      <a href="https://github.com/Loghic">GitHub ↗</a>
+      <a href="https://www.linkedin.com/in/mat%C4%9Bj-mich%C3%A1lek-loghic">LinkedIn ↗</a>
+    </span>
+  </footer>
+</div>
+</body>
+</html>

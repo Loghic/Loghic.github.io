@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PathLab · Loghic</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<div class="container">
+  <a class="back-link" href="../index.html#projects">← back</a>
+
+  <h1>PathLab</h1>
+  <span class="status-pill">live demo</span>
+
+  <p class="lede">
+    A cross-platform pathfinding visualizer built in Rust with egui/eframe. Runs natively
+    on Windows/macOS/Linux <strong>and</strong> in the browser via WebAssembly, from the
+    same codebase.
+  </p>
+
+  <div class="tag-row">
+    <span class="tag">Rust</span><span class="tag">egui / eframe</span><span class="tag">WebAssembly</span>
+  </div>
+
+  <h2>Features</h2>
+  <ul class="feature-list">
+    <li><strong>Four algorithms</strong> — A*, BFS, DFS, and K-Shortest paths (Yen's algorithm), each stepped so you can watch the frontier expand in real time</li>
+    <li><strong>Selectable A* heuristics</strong> — Manhattan, Euclidean, Chebyshev, and Zero (collapses A* into Dijkstra)</li>
+    <li><strong>K-Shortest paths</strong> — pick k between 1 and 32; every distinct path renders in its own color</li>
+    <li>Built-in maze presets plus an in-app wall editor (draw / erase / fill / invert)</li>
+    <li>Undo with stroke-level granularity, grid resizing, and PBM (P1) file I/O</li>
+    <li>Loop mode to continuously replay the solve</li>
+  </ul>
+
+  <h2>Engineering</h2>
+  <p>
+    CI runs lint (fmt + clippy), tests across Linux/macOS/Windows, a wasm-target check,
+    and coverage uploaded to Codecov (pure-logic modules sit near 90–100%; the egui
+    rendering/platform glue is intentionally untested since it's driven by mouse events
+    and OS dialogs).
+  </p>
+
+  <div class="links-row">
+    <a href="https://Loghic.github.io/pathlab/">Live demo ↗</a>
+    <a href="https://github.com/Loghic/pathlab">Repository ↗</a>
+  </div>
+
+  <footer>
+    <span>Matěj Michálek — FJFI ČVUT, Prague</span>
+    <span class="links-row">
+      <a href="https://github.com/Loghic">GitHub ↗</a>
+      <a href="https://www.linkedin.com/in/mat%C4%9Bj-mich%C3%A1lek-loghic">LinkedIn ↗</a>
+    </span>
+  </footer>
+</div>
+</body>
+</html>
