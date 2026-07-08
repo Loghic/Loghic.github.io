@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MAPE — Multi-Asset Pricing Engine · Loghic</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<div class="container">
+  <a class="back-link" href="../index.html#projects">← back</a>
+
+  <h1>MAPE — Multi-Asset Pricing Engine</h1>
+  <span class="status-pill">core, FFI &amp; GUI implemented</span>
+
+  <p class="lede">
+    A quantitative pricing engine in <strong>C++20</strong> with a Rust/egui desktop GUI
+    and an optional real-market-data layer. The C++ core is exposed to Rust through a
+    stable C ABI, and a small Python script feeds it live option quotes for
+    implied-volatility analysis.
+  </p>
+
+  <div class="tag-row">
+    <span class="tag">C++20</span><span class="tag">Rust</span><span class="tag">egui</span>
+    <span class="tag">CMake</span><span class="tag">Python</span><span class="tag">C ABI</span>
+  </div>
+
+  <h2>What's implemented</h2>
+  <ul class="feature-list">
+    <li><strong>Domain types</strong> — MarketData, Option (European/American, call/put), Bond, FX forward, vanilla payoffs, a std::variant-based Instrument</li>
+    <li><strong>Templated engine</strong> — <code>Pricer&lt;Model&gt;</code> constrained by C++20 concepts (PricingModel, Payoff, StochasticProcess) — one generic engine, no virtual dispatch</li>
+    <li><strong>Models</strong> — Black–Scholes–Merton (closed form + analytic Greeks), Cox–Ross–Rubinstein binomial tree (American), Monte Carlo, Crank–Nicolson finite-difference PDE (American)</li>
+    <li><strong>Threading</strong> — parallel Monte Carlo with independent per-thread RNG streams, a thread pool, and concurrent portfolio pricing</li>
+    <li><strong>Exotics</strong> — path-dependent Monte Carlo with Asian, barrier (knock in/out), and lookback payoffs</li>
+    <li><strong>Fixed income</strong> — analytic fixed-coupon bond and FX forward pricing (covered interest parity)</li>
+    <li><strong>AD Greeks</strong> — forward-mode automatic differentiation via dual numbers — exact delta/vega/rho, no bumping</li>
+    <li><strong>Implied vol</strong> — Newton + bisection solver inverting Black-Scholes on a market price</li>
+    <li><strong>Real market data</strong> — optional SQLite cache populated by a yfinance fetcher; GUI plots a volatility smile from real option chains</li>
+    <li><strong>Rust GUI</strong> — eframe/egui desktop app: single-instrument pricing + Greeks, threaded portfolio reprice, convergence chart</li>
+  </ul>
+
+  <h2>Status</h2>
+  <p>
+    Core, FFI, and the Rust GUI are implemented, including exotic path-dependent payoffs,
+    bond/FX pricing, AD Greeks, the implied-vol solver, and GUI convergence + volatility-smile
+    charts. The C++ core passes 104 checks and is clean under ThreadSanitizer. A representative
+    4-core benchmark run shows parallel Monte Carlo reaching ~3.9× speedup (≈97% efficiency)
+    at 4 threads.
+  </p>
+
+  <h2>Engineering</h2>
+  <p>CI, static analysis, and Codecov coverage on every push. Reformatting enforced via clang-format/clang-tidy.</p>
+
+  <div class="links-row">
+    <a href="https://github.com/Loghic/mape">Repository ↗</a>
+  </div>
+
+  <footer>
+    <span>Matěj Michálek — FJFI ČVUT, Prague</span>
+    <span class="links-row">
+      <a href="https://github.com/Loghic">GitHub ↗</a>
+      <a href="https://www.linkedin.com/in/mat%C4%9Bj-mich%C3%A1lek-loghic">LinkedIn ↗</a>
+    </span>
+  </footer>
+</div>
+</body>
+</html>
